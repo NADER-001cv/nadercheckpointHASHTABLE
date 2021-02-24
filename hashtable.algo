@@ -1,0 +1,41 @@
+ALGORITHM sumofnumbers
+VAR
+    tab1,tab2 : array_name : ARRAY_OF integer[30];
+    tab3: array_name : ARRAY_OF integer[50];
+    htab: HASH_TABLE<Integer,Integer> ;
+
+    i, count :INTEGER ;
+    sum:INTEGER := 0;
+    n1, n2 ,m: INTEGER;
+
+BEGIN
+
+      
+           n1:=  read_size();
+           read_array(  n1, tab1) ;
+
+           
+           n2:=  read_size();
+           read_array(  n1, tab2) ;
+    count:= 0;
+    FOR i FROM 0  TO n1 STEP 1  DO
+        IF (htab.lookup(tab1[i] == true)) THEN
+            htab.insert(tab1[i], count + 1) ;
+        ELSE
+            htab.insert(tab1[i]) ;
+        END_IF
+    END_FOR
+
+        FOR i FROM 0  TO n2 STEP 1  DO
+        IF (htab.lookup(tab2[i] == true)) THEN
+            htab.insert(tab2[i], count + 1) ;
+        ELSE
+            htab.insert(tab2[i]) ;
+        END_IF
+    END_FOR
+
+        tab3 := htab.get_key() ;
+        FOR i FROM 0 TO tab3.length STEP 1 DO
+            sum  += tab3[i] ;
+        END_FOR
+END
